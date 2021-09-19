@@ -1,0 +1,81 @@
+﻿<Page x:Class="ClientWPF.Pages.Quizzes"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Loaded="Page_Loaded"
+      Title="Quizzes">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="1" BorderBrush="Black" BorderThickness="1, 0, 0, 0">
+    <Grid>
+        <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+                    <Label Content="Filter: " FontSize="24" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                    <Label Content="Identificatiecode: " FontSize="14" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                    <Label Content="Titel: " FontSize="14" Grid.Column="2" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                    <Label Content="Taal: " FontSize="14" Grid.Column="3" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                    <Label Content="Office app: " FontSize="14" Grid.Column="4" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                    
+                    <TextBox x:Name="textBoxFilterIdentificatiecode" Grid.Column="1" Grid.Row="1" Margin="5" VerticalAlignment="Center" ToolTip="Identificatiecode" TextChanged="TextBoxFilterChanged" Text="{Binding FilterItem.IdentificationCode, Mode=TwoWay}" />
+                    <TextBox x:Name="textBoxFilterTitel" Grid.Column="2" Grid.Row="1" Margin="5" VerticalAlignment="Center" ToolTip="Titel" TextChanged="TextBoxFilterChanged" Text="{Binding FilterItem.Title, Mode=TwoWay}" />
+                    <TextBox x:Name="textBoxFilterTaal" Grid.Column="3" Grid.Row="1" Margin="5" VerticalAlignment="Center" ToolTip="Taal" TextChanged="TextBoxFilterChanged" Text="{Binding FilterItem.Taal, Mode=TwoWay}" />
+                    <TextBox x:Name="textBoxFilterOfficeApp" Grid.Column="4" Grid.Row="1" Margin="5" VerticalAlignment="Center" ToolTip="Office app" TextChanged="TextBoxFilterChanged" Text="{Binding FilterItem.OfficeApp, Mode=TwoWay}" />
+
+                    <Button x:Name="buttonNieuw" Grid.Column="0" Grid.Row="2" Margin="5" Content="Nieuw" Click="Nieuw_Click" />
+                    <Button x:Name="buttonDetails"   Grid.Column="1" Grid.Row="2" Margin="5" Content="Details" Click="ButtonDetails_Click" />
+                    <Button x:Name="buttonSave" Grid.Column="2" Grid.Row="2" Margin="5" Content="Save" Click="ButtonSave_Click" />
+
+                    <Button x:Name="buttonResetFilter" Grid.Column="3" Grid.Row="2" Margin="5" Content="Reset filter" Click="ButtonResetFilter_Click" VerticalAlignment="Center" HorizontalAlignment="Right"  />
+                    <Button x:Name="buttonActivateFilter" Grid.Column="4" Grid.Row="2" Margin="5" Content="Filter" Click="ButtonActivateFilter_Click" />
+                </Grid>
+                
+                <DataGrid x:Name="DataGridQuizzes" MouseRightButtonDown="DataGridQuizzes_MouseRightButtonDown" AutoGenerateColumns="False" Grid.Row="1" ColumnWidth="*" BorderBrush="Black" BorderThickness="0,1,0,0" Background="Transparent" CanUserAddRows="False" CanUserDeleteRows="False" Margin="0, 10, 0, 0" SelectionMode="Single">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Office applicatie" Binding="{Binding OfficeApplication.Name}"/>
+                        <DataGridTextColumn Header="Identificatiecode" Binding="{Binding OfficeApplication.Name}"/>
+                        <DataGridTextColumn Header="Titel" Binding="{Binding Title}"/>
+                        <DataGridTextColumn Header="Instructie taal" Binding="{Binding InstructionsLanguage.nativeName}"/>
+                        <DataGridTextColumn Header="Interface taal" Binding="{Binding UserinterfaceLanguage.nativeName}"/>
+
+                        <DataGridTextColumn Header="Aantal vragen" Binding="{Binding QuestionList.Count}"/>
+            </DataGrid.Columns>
+                    <DataGrid.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem x:Name="menuItemNieuw" Click="Nieuw_Click" Header="Nieuw" />
+                            <MenuItem x:Name="menuItemDetails" Click="menuItemDetails_Click" Header="Details" />
+                        </ContextMenu>
+                    </DataGrid.ContextMenu>
+        </DataGrid>
+            </Grid>
+        </Border>
+        
+        <Grid Grid.Column="0">
+            <!-- Plaats voor menu -->
+        </Grid>
+    </Grid>
+</Page>

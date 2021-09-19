@@ -1,0 +1,97 @@
+﻿<Page x:Class="ClientWPF.Pages.DetailsCursus"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ClientWPF.Pages" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="DetailsCursus">
+    <Grid>
+        <materialDesign:Card 
+  Grid.Row="0"
+  Background="{DynamicResource MaterialDesignLightBackground}"
+  Foreground="{DynamicResource MaterialDesignLightForeground}"
+  Width="850"
+  Height="350"
+  Padding="10" Margin="60,10,0,50">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock
+  Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+  Text="Geselecteerde cursus" Foreground="DarkBlue" />
+                <TextBlock
+  x:Name="LabelNaam"               
+  Margin="0,50,0,0"
+  Style="{StaticResource MaterialDesignBody2TextBlock}"
+  Text="Naam: " />
+                <TextBlock
+  Margin="50,50,0,0"
+  Style="{StaticResource MaterialDesignBody2TextBlock}"
+  Text="{Binding SelectedCourse.Name}" />
+
+                <TextBlock
+  Margin="0,100,0,0"
+  Style="{StaticResource MaterialDesignBody2TextBlock}"
+  Text="Huidig icoon: " />
+                <Image Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="100,0,0,90" Source="{Binding SelectedCourse.Icon}" Height="100" Width="100" />
+                    <Border Grid.Column="1" BorderBrush="DarkBlue" BorderThickness="0,0,1,0" Height="300" />
+                <TextBlock
+                    Margin="15,0,0,0"
+                    Grid.Column="2"
+  Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+  Text="Aanpassingen" Foreground="DarkBlue" />
+                <TextBox
+                    x:Name="textBoxCursusNaam" Text="{Binding SelectedCourse.Name, Mode=TwoWay}"
+                    Width="110"
+                    Grid.Column="2"
+                    Margin="15,25,0,0"
+  materialDesign:HintAssist.Hint="Nieuwe naam"
+  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+  VerticalAlignment="Top"
+                    HorizontalAlignment="Left"/>
+                <materialDesign:PackIcon Kind="Image" ToolTip="Nieuw icoon uploaden" Foreground="DarkBlue" Margin="15,100,0,0"
+  Grid.Column="2" Width="30" Height="30" />
+                <ComboBox x:Name="ComboBoxIcons" Margin="0,95,200,0" ToolTip="Nieuw icoon uploaden" Cursor="Hand" VerticalAlignment="Top" Width="100" Grid.Column="2" ItemsSource="{Binding IconList}" SelectedIndex="0">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding IconName}" />
+                                        <Image Width="35" Height="20" Source="{Binding IconPath}" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                <Button
+                    x:Name="buttonDetailsAanpassenCursus"
+                    Grid.Column="2"
+                        VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="5,0,5,5"
+    Style="{StaticResource MaterialDesignRaisedButton}"
+    Width="150"
+    Height="35">
+                    <TextBlock
+      Text="Cursus aanpassen" />
+                </Button>
+            </Grid>
+        </materialDesign:Card>
+        
+        <Button 
+            x:Name="ButtonNavigateBack"
+            Click="ButtonNavigateBack_Click"
+            Margin="90,0,0,10"           
+  HorizontalAlignment="Left"
+  VerticalAlignment="Bottom"
+  Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
+  ToolTip="Navigeer terug naar startpagina">
+            <materialDesign:PackIcon
+    Kind="ArrowBackCircle"
+    Height="20"
+    Width="20" />
+        </Button>
+
+    </Grid>
+</Page>

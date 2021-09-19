@@ -1,0 +1,68 @@
+﻿<Page x:Class="ClientWPF.Pages.NieuwCursus"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      Loaded="Page_Loaded"
+      d:DesignHeight="450" d:DesignWidth="800">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <materialDesign:Card 
+  Grid.Row="0"
+  Background="{DynamicResource MaterialDesignLightBackground}"
+  Foreground="{DynamicResource MaterialDesignLightForeground}"
+  Width="850"
+  Height="350"
+  Padding="10" Margin="60,10,0,10">
+            <StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <Label Content="Naam cursus"/>
+                    <TextBox Width="150" Height="25" Text="{Binding Name}" HorizontalAlignment="Left"/>
+                    <Label Content="Instructie taal" Margin="0,10,0,0" />
+                    <ComboBox Width="150" x:Name="InstructionsLanguage" DisplayMemberPath="NativeName" HorizontalAlignment="Left" />
+                    <Label Content="UX taal" Margin="0,10,0,0" />
+                    <ComboBox Width="150" x:Name="UserinterfaceLanguag" DisplayMemberPath="NativeName" HorizontalAlignment="Left" />
+                    <Label Content="Office applicatie" Margin="0,10,0,0" />
+                    <ComboBox Width="150" x:Name="OfficeApplication" DisplayMemberPath="Name" HorizontalAlignment="Left" />
+                    <Button
+                        Click="selectImage" HorizontalAlignment="Left" Margin="0,20,0,0"
+    Style="{StaticResource MaterialDesignOutlinedButton}"
+    Width="165"
+    Height="35">
+                        <TextBlock
+      Text="Upload afbeelding" />
+                    </Button>
+                    <Image x:Name="UploadImage" Margin="0,-280,0,0" Width="380" Height="280" Source="https://cdn.discordapp.com/attachments/519853246198579210/786548101238358056/qng98jd6db461.png">
+                        <Image.Effect>
+                            <DropShadowEffect Direction="225" Color="#FFB6C2CB" ShadowDepth="10" BlurRadius="14" />
+                        </Image.Effect>
+                    </Image>
+                    <Button
+                        Click="CreateCursus"
+
+                        VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="5,0,5,5" Style="{StaticResource MaterialDesignRaisedButton}" Width="150" Height="35">
+                        <TextBlock Text="Cursus toevoegen" />
+                    </Button>
+                    <Button  Width="150" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="5" Content="Voeg cursus toe"/>
+                </StackPanel>
+                <Separator
+      Style="{StaticResource MaterialDesignLightSeparator}" />
+            </StackPanel>
+        </materialDesign:Card>
+        
+        <Button 
+            x:Name="ButtonNavigateBack"
+            Click="ButtonNavigateBack_Click"
+            Margin="90,0,0,10"
+            Grid.Row="1" HorizontalAlignment="Left" Style="{StaticResource MaterialDesignFloatingActionMiniButton}" ToolTip="Navigeer terug naar startpagina">
+            <materialDesign:PackIcon Kind="ArrowBackCircle" Height="20" Width="20" />
+        </Button>
+    </Grid>
+</Page>
